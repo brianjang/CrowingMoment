@@ -1,9 +1,8 @@
 package com.onevalue.brian.crowingmoment;
 
-import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -76,6 +75,7 @@ public class MomentFragment extends Fragment {
     View v = inflater.inflate(R.layout.fragment_moment, container, false);
 
     mTitleField = (EditText)v.findViewById(R.id.moment_title);
+    
     mTitleField.addTextChangedListener(new TextWatcher() {
       @Override
       public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -102,16 +102,16 @@ public class MomentFragment extends Fragment {
     }
   }
 
-  @Override
-  public void onAttach(Activity activity) {
-    super.onAttach(activity);
-    try {
-      mListener = (OnFragmentInteractionListener) activity;
-    } catch (ClassCastException e) {
-      throw new ClassCastException(activity.toString()
-          + " must implement OnFragmentInteractionListener");
-    }
-  }
+//  @Override
+//  public void onAttach(Activity activity) {
+//    super.onAttach(activity);
+//    try {
+//      mListener = (OnFragmentInteractionListener) activity;
+//    } catch (ClassCastException e) {
+//      throw new ClassCastException(activity.toString()
+//          + " must implement OnFragmentInteractionListener");
+//    }
+//  }
 
   @Override
   public void onDetach() {

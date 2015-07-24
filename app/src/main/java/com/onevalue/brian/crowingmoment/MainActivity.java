@@ -1,8 +1,10 @@
 package com.onevalue.brian.crowingmoment;
 
-import android.app.FragmentManager;
+
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -15,6 +17,13 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         FragmentManager fm = getSupportFragmentManager();
+        Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
+        if (fragment == null) {
+            fragment = new MomentFragment();
+            fm.beginTransaction()
+                .add(R.id.fragmentContainer, fragment)
+                .commit();
+        }
     }
 
     @Override
