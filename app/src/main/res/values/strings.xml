@@ -6,6 +6,9 @@
 
     <!--for fragment_moment layout-->
     <string name="moment_title_hint">Enter your CrowingMoment title.</string>
+    <string name="moment_title_label">Catch your Crowing Moment</string>
+    <string name="moment_detail_label">Describe your Crowing Moment</string>
+    <string name="moment_save_label">Save?</string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

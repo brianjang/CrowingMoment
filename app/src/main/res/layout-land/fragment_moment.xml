@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TextView
@@ -24,22 +24,21 @@
         style="?android:listSeparatorTextViewStyle"
         />
 
-    <LinearLayout
+    <Button
+        android:id="@+id/moment_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp" >
-        <Button
-            android:id="@+id/crime_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-        <CheckBox
-            android:id="@+id/crime_solved"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/moment_title_label" />
-    </LinearLayout>
+        android:layout_marginRight="16dp"
+        />
+
+    <CheckBox
+        android:id="@+id/moment_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/moment_save_label"
+        />
 
 </LinearLayout>

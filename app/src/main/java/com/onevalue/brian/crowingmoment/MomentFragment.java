@@ -8,6 +8,9 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 
 
@@ -21,8 +24,13 @@ import android.widget.EditText;
  */
 public class MomentFragment extends Fragment {
 
-  private Moment mMoment; //model object
+  //  reference for model object
+  private Moment mMoment;
+
+  //  reference for widget in View
   private EditText mTitleField;
+  private Button mDateButton;
+  private CheckBox mSaveCheckBox;
 
   // TODO: Rename parameter arguments, choose names that match
   // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -92,6 +100,19 @@ public class MomentFragment extends Fragment {
         //TODO
       }
     });
+
+    mDateButton = (Button)v.findViewById(R.id.moment_date);
+    mDateButton.setText(mMoment.getDate().toString());
+    mDateButton.setEnabled(false);
+
+    mSaveCheckBox = (CheckBox)v.findViewById(R.id.moment_save);
+    mSaveCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+      @Override
+      public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        mMoment.setSave(isChecked);
+      }
+    });
+
     return v;
   }
 
