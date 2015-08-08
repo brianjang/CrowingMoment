@@ -50,4 +50,9 @@ public class Moment {
   public void setSave(boolean save) {
     mSave = save;
   }
+
+  @Override
+  public String toString() {
+    return mTitle;
+  }
 }

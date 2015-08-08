@@ -9,8 +9,14 @@
     <string name="moment_title_label">Catch your Crowing Moment</string>
     <string name="moment_detail_label">Describe your Crowing Moment</string>
     <string name="moment_save_label">Save?</string>
+    <string name="moment_title">Moments List</string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_moment_list">MomentListActivity</string>
+
+    <!--for list_item_memont layout-->
+    <string name="list_item_moment_title">Moment Title</string>
+    <string name="list_item_moment_data">Moment date</string>
 </resources>
 

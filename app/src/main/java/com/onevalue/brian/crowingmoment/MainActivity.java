@@ -1,29 +1,16 @@
 package com.onevalue.brian.crowingmoment;
 
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
 //FragmentActivity : use android support library for legacy compatibility
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends SingleFragmentActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        FragmentManager fm = getSupportFragmentManager();
-        Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
-        if (fragment == null) {
-            fragment = new MomentFragment();
-            fm.beginTransaction()
-                .add(R.id.fragmentContainer, fragment)
-                .commit();
-        }
+    protected Fragment createFragment() {
+        return new MomentFragment();
     }
 
     @Override
