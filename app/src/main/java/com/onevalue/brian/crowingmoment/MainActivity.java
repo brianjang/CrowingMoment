@@ -5,12 +5,17 @@ import android.support.v4.app.Fragment;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.UUID;
+
 //FragmentActivity : use android support library for legacy compatibility
 public class MainActivity extends SingleFragmentActivity {
 
     @Override
     protected Fragment createFragment() {
-        return new MomentFragment();
+//        return new MomentFragment();
+        UUID momentId = (UUID)getIntent().getSerializableExtra(MomentFragment.EXTRA_MOMENT_ID);
+
+        return MomentFragment.newInstance(momentId);
     }
 
     @Override

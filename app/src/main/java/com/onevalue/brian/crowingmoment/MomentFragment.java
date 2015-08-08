@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+
+import java.util.UUID;
 
 
 /**
@@ -24,6 +27,10 @@ import android.widget.EditText;
  */
 public class MomentFragment extends Fragment {
 
+  private static final String TAG = "MomentFragment";
+
+
+
   //  reference for model object
   private Moment mMoment;
 
@@ -34,12 +41,11 @@ public class MomentFragment extends Fragment {
 
   // TODO: Rename parameter arguments, choose names that match
   // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-  private static final String ARG_PARAM1 = "param1";
-  private static final String ARG_PARAM2 = "param2";
+//  private static final String EXTRA_MOMENT_ID = "param1";
+  public static final String EXTRA_MOMENT_ID = "com.onevalue.brian.crowingmoment.moment_id";
 
   // TODO: Rename and change types of parameters
-  private String mParam1;
-  private String mParam2;
+  private UUID momentId;
 
   private OnFragmentInteractionListener mListener;
 
@@ -47,16 +53,14 @@ public class MomentFragment extends Fragment {
    * Use this factory method to create a new instance of
    * this fragment using the provided parameters.
    *
-   * @param param1 Parameter 1.
-   * @param param2 Parameter 2.
+   * @param momentId UUID of selected moment instance.
    * @return A new instance of fragment MomentFragment.
    */
   // TODO: Rename and change types and number of parameters
-  public static MomentFragment newInstance(String param1, String param2) {
+  public static MomentFragment newInstance(UUID momentId) {
     MomentFragment fragment = new MomentFragment();
     Bundle args = new Bundle();
-    args.putString(ARG_PARAM1, param1);
-    args.putString(ARG_PARAM2, param2);
+    args.putSerializable(EXTRA_MOMENT_ID, momentId);
     fragment.setArguments(args);
     return fragment;
   }
@@ -69,11 +73,11 @@ public class MomentFragment extends Fragment {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     if (getArguments() != null) {
-      mParam1 = getArguments().getString(ARG_PARAM1);
-      mParam2 = getArguments().getString(ARG_PARAM2);
+      momentId = (UUID)getArguments().getSerializable(EXTRA_MOMENT_ID);
     }
 
-    mMoment = new Moment();
+    mMoment = MomentLab.get(getActivity()).getMoment(momentId);
+    Log.d(TAG, "moment UUID : " + momentId.toString());
   }
 
   @Override
@@ -83,6 +87,7 @@ public class MomentFragment extends Fragment {
     View v = inflater.inflate(R.layout.fragment_moment, container, false);
 
     mTitleField = (EditText)v.findViewById(R.id.moment_title);
+    mTitleField.setText(mMoment.getTitle());
     
     mTitleField.addTextChangedListener(new TextWatcher() {
       @Override
@@ -106,6 +111,7 @@ public class MomentFragment extends Fragment {
     mDateButton.setEnabled(false);
 
     mSaveCheckBox = (CheckBox)v.findViewById(R.id.moment_save);
+    mSaveCheckBox.setChecked(mMoment.isSave());
     mSaveCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
       @Override
       public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

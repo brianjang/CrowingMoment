@@ -28,17 +28,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp" >
+        android:layout_marginRight="16dp"
+        android:orientation="vertical">
         <Button
-            android:id="@+id/crime_date"
+            android:id="@+id/moment_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+
+            />
         <CheckBox
-            android:id="@+id/crime_solved"
+            android:id="@+id/moment_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+
             android:text="@string/moment_title_label" />
     </LinearLayout>
 
